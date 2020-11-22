@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUSInovation.Views.MovieByTitlePage" Title="Movie by title">
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="#518faa">
+                <Label x:Name="lblTitle" TextColor="White" Margin="0,20,0,0" Text="Entrer title here :" FontSize="40" HorizontalTextAlignment="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>HelveticaNeueThin.ttf#HelveticaNeueThin</OnPlatform.Android>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Editor x:Name="edtMovieTitle" Margin="10,0,20,0"/>
+                <Button x:Name="btnByTitle" Margin="30,0,30,10" BackgroundColor="#c68e3c" Style="{StaticResource boutonLabStyle}" FontSize="16" Clicked="btnByTitle_Clicked" Text="Search" WidthRequest="120" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout x:Name="waitLayout"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="True" IsEnabled="True"/>
+            </StackLayout>
+            <ScrollView VerticalOptions="FillAndExpand">
+                <StackLayout Margin="20,0,20,0" >
+                    <Label Text="{Binding Title}" FontSize="40" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Year}" FontSize="20" HorizontalOptions="Center" />
+                    <Image x:Name="ImgPoster" Source="{Binding Poster}" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Plot}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="{Binding Rated}" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Released}" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Runtime}" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Genre}" FontSize="20" HorizontalOptions="Center" />
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Director : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Director}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Writen by : " HorizontalOptions="Center" FontAttributes="Bold" />
+                        <Label Text="{Binding Writer}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Actors : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Actors}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Produced by : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Production}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Languages : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Language}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Countries : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Country}" HorizontalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Awards : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Awards}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Ratings : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <ListView x:Name="LsvOMDb" ItemsSource="{Binding Ratings}" VerticalOptions="Center">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label Text="{Binding Source}"/>
+                                            <Label Text="{Binding Value}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Box Office : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding BoxOffice}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10,0,10">
+                        <Label Text="Website : " HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="{Binding Website}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout HeightRequest="500" WidthRequest="400" Margin="0,10,0,10">
+                        <Button x:Name="btnLoadYoutube" Margin="30,0,30,10" BackgroundColor="Red" TextColor="White" HeightRequest="50" Style="{StaticResource boutonLabStyle}" Clicked="btnLoadYoutube_Clicked" Text="Search trailer" WidthRequest="120" HorizontalOptions="FillAndExpand"/>
+                        <StackLayout x:Name="waitLayout2" VerticalOptions="Center" HorizontalOptions="Center">
+                            <ActivityIndicator IsRunning="True" IsEnabled="True"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Frame x:Name="popuplayout" IsVisible="False" BackgroundColor="White" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HeightRequest="3000">
+                    <Button x:Name="btnCloseYoutube" Margin="30,0,30,10" BackgroundColor="Red" TextColor="White" HeightRequest="50" Style="{StaticResource boutonLabStyle}" Clicked="btnCloseYoutube_Clicked" Text="Close" WidthRequest="120" HorizontalOptions="FillAndExpand"/>
+                    <WebView x:Name="WebYoutube" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUSInovation.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="0"  Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" BackgroundColor="#518faa" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <Image Source="iconMI.png" Aspect="AspectFit" Margin="0,35,0,0" HeightRequest="100" />
+                <Label Text="MUSInovation" TextColor="White" Margin="0,30,0,20" FontSize="30" HorizontalOptions="Center">
+                </Label>
+            </StackLayout>
+            <Image Source="labseparator.png" Aspect="AspectFill"/>
+            <StackLayout Orientation="Vertical" Margin="30,0,30,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Button x:Name="btnByTitle" BackgroundColor="#c1ab24" Margin="0,20,0,0" Style="{StaticResource boutonLabStyle}" Clicked="btnByTitle_Clicked" Text="Movie by title" WidthRequest="120" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="btnByAuthor" Margin="0,10,0,0" Style="{StaticResource boutonLabStyle}" BackgroundColor="#a4881c" Text="Movie by author" HorizontalOptions="FillAndExpand" Clicked="btnByAuthor_Clicked" />
+                <Button x:Name="btnRecents" Margin="0,10,0,0" Style="{StaticResource boutonLabStyle}" BackgroundColor="#c68e3c" Text="New movies" HorizontalOptions="FillAndExpand" Clicked="btnRecents_Clicked" />
+                <Button x:Name="btnHollywoodWeather" Margin="0,10,0,0" Style="{StaticResource boutonLabStyle}" BackgroundColor="#c67f3c" Text="Hollywood weather" HorizontalOptions="FillAndExpand" Clicked="btnHollywoodWeather_Clicked" />
+                <Button x:Name="btnCuckNorisJoke" Margin="0,10,0,0" Style="{StaticResource boutonLabStyle}" BackgroundColor="#c6653c" Text="Chuck Noris facts" HorizontalOptions="FillAndExpand" Clicked="btnCuckNorisJoke_Clicked" />
+                <Button x:Name="btnYearFacts" Margin="0,10,0,0" Style="{StaticResource boutonLabStyle}" BackgroundColor="#c63c3c" Text="Year facts" HorizontalOptions="FillAndExpand" Clicked="btnYearFacts_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

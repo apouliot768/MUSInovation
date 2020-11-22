@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUSInovation.Views.UpcomingMoviesPage"
+             Title="New movies">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="waitLayout"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="True" IsEnabled="True"/>
+            </StackLayout>
+            <Label x:Name="LblError" Text="" VerticalOptions="Center" TextColor="Red"/>
+            <ListView x:Name="LsvUpcomings" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemSelected="LsvUpcomings_ItemSelected" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="FillAndExpand" Margin="15, 0" >
+                                <Label Text="{Binding title}" TextColor="Black" VerticalOptions="Center" FontAttributes="Bold" FontSize="20"/>
+                                <Image Source="{Binding poster_path}" WidthRequest="200" HeightRequest="300"/>
+                                <Label Text="Search trailer" Margin="30,0,30,10" BackgroundColor="Red" TextColor="White" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding release_date}" TextColor="Black" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Original language : " />
+                                    <Label Text="{Binding original_language}" />
+                                </StackLayout>
+                                <Label Text="{Binding overview}" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Ratings : " TextColor="Black" FontAttributes="Bold"/>
+                                    <Label Text="{Binding vote_average}" TextColor="Black" FontAttributes="Bold" />
+                                    <Label Text="/10" TextColor="Black" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Frame x:Name="popuplayout" IsVisible="False" BackgroundColor="White" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HeightRequest="3000">
+                    <StackLayout x:Name="waitLayout2" VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsRunning="True" IsEnabled="True"/>
+                    </StackLayout>
+                    <Button x:Name="btnCloseYoutube" Margin="30,0,30,10" BackgroundColor="Red" TextColor="White" HeightRequest="50" Style="{StaticResource boutonLabStyle}" Clicked="btnCloseYoutube_Clicked" Text="Close" WidthRequest="120" HorizontalOptions="FillAndExpand"/>
+                    <WebView x:Name="WebYoutube" IsVisible="false" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

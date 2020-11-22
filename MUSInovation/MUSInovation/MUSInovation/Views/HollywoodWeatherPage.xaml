@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MUSInovation.Views.HollywoodWeatherPage"
+             Title="Hollywood weather"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="#518faa">
+                <Label x:Name="lblTitle" TextColor="White" Margin="0,20,0,0" Text="Hollywood weather" FontSize="40" HorizontalTextAlignment="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.Android>HelveticaNeueThin.ttf#HelveticaNeueThin</OnPlatform.Android>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label Text="Sponsored by" HorizontalTextAlignment="Center" TextColor="White"/>
+                <Label Text="NATIONAL WEATHER SERVICE" HorizontalTextAlignment="Center" TextColor="White"/>
+            </StackLayout>
+            <Label x:Name="LblError" Text="" VerticalOptions="Center"  TextColor="Red"/>
+            <StackLayout x:Name="waitLayout"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="True" IsEnabled="True"/>
+            </StackLayout>
+            <ListView x:Name="LsvWeather" VerticalOptions="FillAndExpand" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="15, 0">
+                                <Label Text="{Binding name}" TextColor="Black" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                <Image Source="{Binding icon}" WidthRequest="100" HeightRequest="100"/>
+                                <Label Text="{Binding detailedForecast}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
