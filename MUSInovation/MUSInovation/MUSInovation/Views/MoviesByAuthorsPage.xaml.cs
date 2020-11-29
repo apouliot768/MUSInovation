@@ -26,7 +26,7 @@ namespace MUSInovation.Views
             try
             {
                 var movies = await TMBdService.GetAuthorMovies(edtMovieAuthor.Text);
-                if (movies != null)
+                if (movies != null && movies.Count > 0)
                 {
                     viewModels = movies;
                     LsvByAuthors.ItemsSource = null;
@@ -67,7 +67,7 @@ namespace MUSInovation.Views
         private void FailedToGetUpcommings()
         {
             viewModels = null;
-            LblError.Text = "Connection failed...";
+            LblError.Text = "Sorry Not found...";
         }
 
         private void btnCloseYoutube_Clicked(object sender, EventArgs e)
@@ -82,6 +82,7 @@ namespace MUSInovation.Views
             TMBdByAuthorsViewModel viewModel = LsvByAuthors.SelectedItem as TMBdByAuthorsViewModel;
             if (viewModel != null)
             {
+                LblError.Text = "";
                 LsvByAuthors.SelectedItem = null;
                 popuplayout.IsVisible = true;
                 waitLayout2.IsVisible = true;
